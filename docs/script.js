@@ -24,7 +24,7 @@ var svg = d3.select("body").append("svg")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
 // Load the data and visualize
-d3.csv("final_scores.csv", function(error, data) {
+d3.csv("scores_final.csv", function(error, data) {
   if (error) throw error;
 
   // Parse the data to numbers
