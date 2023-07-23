@@ -12,7 +12,7 @@ var svg = d3.select("body")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
 // Read the data
-d3.csv("/data/scores_final.csv").then(function(data) {
+d3.csv("scores_final.csv").then(function(data) {
 
     // Add X axis
     var x = d3.scaleLinear()
