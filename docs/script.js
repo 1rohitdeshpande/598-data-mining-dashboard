@@ -23,53 +23,66 @@ function createGraph(dataFile, xLabel, yLabel, title) {
 
     // Add X axis
     var x = d3.scaleLinear()
-        .domain(d3.extent(data, function (d) { return d.year; }))
-        .range([0, width]);
+      .domain(d3.extent(data, function (d) { return d.year; }))
+      .range([0, width]);
     svg.append("g")
-        .attr("transform", "translate(0," + height + ")")
-        .call(d3.axisBottom(x).tickFormat(d3.format("d")))
-        .append("text")      // Text for the X axis
-        .attr("x", width / 2)
-        .attr("y", margin.bottom / 1.5)
-        .attr("text-anchor", "middle")
-        .style("font-size", "16px")
-        .style("fill", "#000")
-        .text(xLabel);
+      .attr("transform", "translate(0," + height + ")")
+      .call(d3.axisBottom(x).tickFormat(d3.format("d")))
+      .append("text")      // Text for the X axis
+      .attr("x", width / 2)
+      .attr("y", margin.bottom / 1.5)
+      .attr("text-anchor", "middle")
+      .style("font-size", "16px")
+      .style("fill", "#000")
+      .text(xLabel);
 
     // Add Y axis
     var y = d3.scaleLinear()
-        .domain([0, d3.max(data, function (d) { return +d.total_points; })])
-        .range([height, 0]);
+      .domain([0, d3.max(data, function (d) { return +d.total_points; })])
+      .range([height, 0]);
     svg.append("g")
-        .call(d3.axisLeft(y))
-        .append("text")      // Text for the Y axis
-        .attr("transform", "rotate(-90)")
-        .attr("y", -margin.left)
-        .attr("x", -(height / 2))
-        .attr("dy", "1em")
-        .attr("text-anchor", "middle")
-        .style("font-size", "16px")
-        .style("fill", "#000")
-        .text(yLabel);
+      .call(d3.axisLeft(y))
+      .append("text")      // Text for the Y axis
+      .attr("transform", "rotate(-90)")
+      .attr("y", -margin.left)
+      .attr("x", -(height / 2))
+      .attr("dy", "1em")
+      .attr("text-anchor", "middle")
+      .style("font-size", "16px")
+      .style("fill", "#000")
+      .text(yLabel);
 
     // Add the line
     svg.append("path")
-        .datum(data)
-        .attr("fill", "none")
-        .attr("stroke", "steelblue")
-        .attr("stroke-width", 1.5)
-        .attr("d", d3.line()
+      .datum(data)
+      .attr("fill", "none")
+      .attr("stroke", "steelblue")
+      .attr("stroke-width", 1.5)
+      .attr("d", d3.line()
         .x(function (d) { return x(d.year) })
         .y(function (d) { return y(d.total_points) })
-        );
+      );
 
     svg.append("text")
-        .attr("x", (width / 2))
-        .attr("y", -margin.top / 2)
-        .attr("text-anchor", "middle")
-        .style("font-size", "20px")
-        .style("text-decoration", "underline")
-        .text(title);
+      .attr("x", (width / 2))
+      .attr("y", -margin.top / 2)
+      .attr("text-anchor", "middle")
+      .style("font-size", "20px")
+      .style("text-decoration", "underline")
+      .text(title);
+    // Add data points to the chart with tooltips
+    svg.selectAll("circle")
+      .data(data)
+      .enter()
+      .append("circle")
+      .attr("cx", d => xScale(d.year))
+      .attr("cy", d => yScale(d.total_points))
+      .attr("r", 5)
+      .attr("fill", "steelblue")
+      .on("mouseover", function (event, d) {
+        showTooltip(event, d, d.year, d.total_points);
+      })
+      .on("mouseout", hideTooltip);
   });
 }
 
@@ -89,6 +102,23 @@ function handleButtonClick(event) {
     default:
       break;
   }
+}
+
+// Function to create and display the tooltip
+function showTooltip(event, dataPoint, xValue, yValue) {
+  const tooltip = d3.select("#my_dataviz")
+    .append("div")
+    .attr("class", "tooltip")
+    .style("left", `${event.pageX}px`)
+    .style("top", `${event.pageY}px`);
+
+  tooltip.html(`<strong>Year:</strong> ${xValue}<br><strong>Data Point:</strong> ${yValue}`)
+    .style("opacity", 0.9);
+}
+
+// Function to remove the tooltip
+function hideTooltip() {
+  d3.select(".tooltip").remove();
 }
 
 // Add event listeners to the buttons
