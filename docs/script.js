@@ -22,10 +22,11 @@ d3.csv("scores_final.csv").then(function (data) {
     .attr("transform", "translate(0," + height + ")")
     .call(d3.axisBottom(x).tickFormat(d3.format("d")))
     .append("text")      // Text for the X axis
-    .attr("class", "label")
-    .attr("x", width)
-    .attr("y", -6)
-    .style("text-anchor", "end")
+    .attr("x", width / 2)
+    .attr("y", margin.bottom)
+    .attr("text-anchor", "middle")
+    .style("font-size", "16px")
+    .style("fill", "#000")
     .text("Year");
 
   // Add Y axis
@@ -35,11 +36,13 @@ d3.csv("scores_final.csv").then(function (data) {
   svg.append("g")
     .call(d3.axisLeft(y))
     .append("text")      // Text for the Y axis
-    .attr("class", "label")
     .attr("transform", "rotate(-90)")
-    .attr("y", 6)
-    .attr("dy", ".71em")
-    .style("text-anchor", "end")
+    .attr("y", -margin.left)
+    .attr("x", -(height / 2))
+    .attr("dy", "1em")
+    .attr("text-anchor", "middle")
+    .style("font-size", "16px")
+    .style("fill", "#000")
     .text("Total Points per Season");
 
   // Add the line
