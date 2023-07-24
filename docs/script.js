@@ -1,7 +1,7 @@
 // Set the dimensions and margins of the graph
 var margin = { top: 10, right: 30, bottom: 30, left: 60 },
-  width = 500 - margin.left - margin.right,
-  height = 500 - margin.top - margin.bottom;
+  width = 460 - margin.left - margin.right,
+  height = 400 - margin.top - margin.bottom;
 
 // Append the SVG object to the body of the page
 var svg = d3.select("body")
@@ -58,7 +58,7 @@ d3.csv("scores_final.csv").then(function (data) {
 
   svg.append("text")
     .attr("x", (width / 2))
-    .attr("y", 0 - (margin.top / 2))
+    .attr("y", 0 + margin.top)
     .attr("text-anchor", "middle")
     .style("font-size", "20px")
     .style("text-decoration", "underline")
