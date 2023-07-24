@@ -37,7 +37,7 @@ d3.csv("scores_final.csv").then(function (data) {
     .call(d3.axisLeft(y))
     .append("text")      // Text for the Y axis
     .attr("transform", "rotate(-90)")
-    .attr("y", -margin.left / 5)
+    .attr("y", -margin.left)
     .attr("x", -(height / 2))
     .attr("dy", "1em")
     .attr("text-anchor", "middle")
