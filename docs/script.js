@@ -20,14 +20,27 @@ d3.csv("scores_final.csv").then(function (data) {
     .range([0, width]);
   svg.append("g")
     .attr("transform", "translate(0," + height + ")")
-    .call(d3.axisBottom(x).tickFormat(d3.format("d")));
+    .call(d3.axisBottom(x).tickFormat(d3.format("d")))
+    .append("text")      // Text for the X axis
+    .attr("class", "label")
+    .attr("x", width)
+    .attr("y", -6)
+    .style("text-anchor", "end")
+    .text("Year");
 
   // Add Y axis
   var y = d3.scaleLinear()
     .domain([0, d3.max(data, function (d) { return +d.total_points; })])
     .range([height, 0]);
   svg.append("g")
-    .call(d3.axisLeft(y));
+    .call(d3.axisLeft(y))
+    .append("text")      // Text for the Y axis
+    .attr("class", "label")
+    .attr("transform", "rotate(-90)")
+    .attr("y", 6)
+    .attr("dy", ".71em")
+    .style("text-anchor", "end")
+    .text("Total Points per Season");
 
   // Add the line
   svg.append("path")
@@ -38,29 +51,5 @@ d3.csv("scores_final.csv").then(function (data) {
     .attr("d", d3.line()
       .x(function (d) { return x(d.year) })
       .y(function (d) { return y(d.total_points) })
-    )
-
-
-  // Add the axes
-  svg.append("g")
-    .attr("class", "x axis")
-    .attr("transform", "translate(0," + height + ")")
-    .call(xAxis)
-    .append("text")
-    .attr("class", "label")
-    .attr("x", width)
-    .attr("y", -6)
-    .style("text-anchor", "end")
-    .text("Year");
-
-  svg.append("g")
-    .attr("class", "y axis")
-    .call(yAxis)
-    .append("text")
-    .attr("class", "label")
-    .attr("transform", "rotate(-90)")
-    .attr("y", 6)
-    .attr("dy", ".71em")
-    .style("text-anchor", "end")
-    .text("Total Points per Season");
+    );
 });
