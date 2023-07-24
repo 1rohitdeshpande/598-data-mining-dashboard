@@ -55,4 +55,12 @@ d3.csv("scores_final.csv").then(function (data) {
       .x(function (d) { return x(d.year) })
       .y(function (d) { return y(d.total_points) })
     );
+
+  svg.append("text")
+    .attr("x", (width / 2))
+    .attr("y", 0 - (margin.top / 2))
+    .attr("text-anchor", "middle")
+    .style("font-size", "20px")
+    .style("text-decoration", "underline")
+    .text("Total Points per NBA Season By Year");
 });
