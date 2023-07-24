@@ -27,15 +27,17 @@ document.getElementById("button1").addEventListener("click", function() {
 });
 
 document.getElementById("button2").addEventListener("click", function() {
-  createGraph("secondFile.csv", "my_dataviz");
+  createGraph("3pt_final.csv", "my_dataviz");
 });
 
 document.getElementById("button3").addEventListener("click", function() {
-  createGraph("thirdFile.csv", "my_dataviz");
+  createGraph("C3pt_final.csv", "my_dataviz");
 });
 
 
-
+//scores_final.csv
+//3pt_final.csv
+//C3pt_final.csv
 
 
 /*// Set the dimensions and margins of the graph
