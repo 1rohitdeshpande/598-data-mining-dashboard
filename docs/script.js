@@ -22,8 +22,8 @@ d3.csv("scores_final.csv").then(function (data) {
     .attr("transform", "translate(0," + height + ")")
     .call(d3.axisBottom(x).tickFormat(d3.format("d")))
     .append("text")      // Text for the X axis
-    .attr("x", width / 3)
-    .attr("y", margin.bottom / 2)
+    .attr("x", width / 2)
+    .attr("y", margin.bottom / 1.5)
     .attr("text-anchor", "middle")
     .style("font-size", "16px")
     .style("fill", "#000")
