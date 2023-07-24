@@ -99,13 +99,12 @@ function handleButtonClick(event) {
 
 // Function to create and display the tooltip
 function showTooltip(event, dataPoint, xValue, yValue) {
-  const tooltip = d3.select("#my_dataviz")
+  const tooltip = d3.select(graphContainer)
     .append("div")
     .attr("class", "tooltip")
-    .style("left", `${event.pageX}px`)
-    .style("top", `${event.pageY}px`);
-
-  tooltip.html(`<strong>Year:</strong> ${xValue}<br><strong>Data Point:</strong> ${yValue}`)
+    .html(`<strong>Year:</strong> ${xValue}<br><strong>Data Point:</strong> ${yValue}`)
+    .style("left", `${event.pageX + 10}px`) // Adjust the left position by adding 10px
+    .style("top", `${event.pageY - 20}px`)  // Adjust the top position by subtracting 20px
     .style("opacity", 0.9);
 }
 
