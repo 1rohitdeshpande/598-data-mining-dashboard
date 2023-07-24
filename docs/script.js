@@ -1,6 +1,6 @@
 // Set the dimensions and margins of the graph
 var margin = { top: 50, right: 30, bottom: 50, left: 70 },
-  width = 460 - margin.left - margin.right,
+  width = 500 - margin.left - margin.right,
   height = 400 - margin.top - margin.bottom;
 
 // Append the SVG object to the body of the page
