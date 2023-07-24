@@ -22,12 +22,12 @@ function createGraph(dataFile, xLabel, yLabel, title) {
   d3.csv(dataFile).then(function (data) {
 
     // Add X axis
-    var x = d3.scaleLinear()
+    var xScale = d3.scaleLinear()
       .domain(d3.extent(data, function (d) { return d.year; }))
       .range([0, width]);
     svg.append("g")
       .attr("transform", "translate(0," + height + ")")
-      .call(d3.axisBottom(x).tickFormat(d3.format("d")))
+      .call(d3.axisBottom(xScale).tickFormat(d3.format("d")))
       .append("text")      // Text for the X axis
       .attr("x", width / 2)
       .attr("y", margin.bottom / 1.5)
@@ -37,11 +37,11 @@ function createGraph(dataFile, xLabel, yLabel, title) {
       .text(xLabel);
 
     // Add Y axis
-    var y = d3.scaleLinear()
+    var yScale = d3.scaleLinear()
       .domain([0, d3.max(data, function (d) { return +d.total_points; })])
       .range([height, 0]);
     svg.append("g")
-      .call(d3.axisLeft(y))
+      .call(d3.axisLeft(yScale))
       .append("text")      // Text for the Y axis
       .attr("transform", "rotate(-90)")
       .attr("y", -margin.left)
@@ -59,17 +59,10 @@ function createGraph(dataFile, xLabel, yLabel, title) {
       .attr("stroke", "steelblue")
       .attr("stroke-width", 1.5)
       .attr("d", d3.line()
-        .x(function (d) { return x(d.year) })
-        .y(function (d) { return y(d.total_points) })
+        .x(function (d) { return xScale(d.year) })
+        .y(function (d) { return yScale(d.total_points) })
       );
 
-    svg.append("text")
-      .attr("x", (width / 2))
-      .attr("y", -margin.top / 2)
-      .attr("text-anchor", "middle")
-      .style("font-size", "20px")
-      .style("text-decoration", "underline")
-      .text(title);
     // Add data points to the chart with tooltips
     svg.selectAll("circle")
       .data(data)
