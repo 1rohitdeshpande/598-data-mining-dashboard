@@ -23,7 +23,7 @@ d3.csv("scores_final.csv").then(function (data) {
     .call(d3.axisBottom(x).tickFormat(d3.format("d")))
     .append("text")      // Text for the X axis
     .attr("x", width / 2)
-    .attr("y", margin.bottom)
+    .attr("y", height + margin.bottom / 2)
     .attr("text-anchor", "middle")
     .style("font-size", "16px")
     .style("fill", "#000")
@@ -37,7 +37,7 @@ d3.csv("scores_final.csv").then(function (data) {
     .call(d3.axisLeft(y))
     .append("text")      // Text for the Y axis
     .attr("transform", "rotate(-90)")
-    .attr("y", -margin.left)
+    .attr("y", -margin.left / 1.5)
     .attr("x", -(height / 2))
     .attr("dy", "1em")
     .attr("text-anchor", "middle")
@@ -58,7 +58,7 @@ d3.csv("scores_final.csv").then(function (data) {
 
   svg.append("text")
     .attr("x", (width / 2))
-    .attr("y", 0 + margin.top)
+    .attr("y", -margin.top / 2)
     .attr("text-anchor", "middle")
     .style("font-size", "20px")
     .style("text-decoration", "underline")
