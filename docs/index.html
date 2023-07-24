@@ -23,14 +23,29 @@
     #buttons-container {
         margin-top: 20px;
     }
+
+    /* Style for introduction text */
+    #introduction-text {
+        max-width: 600px;
+        text-align: center;
+        margin: 20px 0;
+    }
+
+    /* Style for buttons with spacing */
+    #buttons-container button {
+        margin: 5px;
+    }
 </style>
 
 <body>
     <div id="my_dataviz"></div>
     <div id="buttons-container">
-        <button id="btn1">Graph 1</button>
-        <button id="btn2">Graph 2</button>
-        <button id="btn3">Graph 3</button>
+        <button id="btn1">Total Points</button>
+        <button id="btn2">Total 3-pt Attempts</button>
+        <button id="btn3">Total 3-pt Attempts by Centers</button>
+    </div>
+    <div id="introduction-text">
+        <p>Welcome to the NBA Style Change Visualization! Explore the graphs below to see the trends over the years.</p>
     </div>
     <script src="script.js"></script>
 </body>
