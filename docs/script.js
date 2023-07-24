@@ -73,6 +73,29 @@ function createGraph(dataFile, xLabel, yLabel, title) {
   });
 }
 
+// Function to handle button click events
+function handleButtonClick(event) {
+  const buttonId = event.target.id;
+  switch (buttonId) {
+    case 'btn1':
+      createGraph('scores_final.csv', 'Year', 'Total Points per Season', 'Total Points per NBA Season By Year');
+      break;
+    case 'btn2':
+      createGraph('3pt_final.csv', 'Year', 'Total 3 Point attempts by Season', 'Total 3 Point attempts per Season By Year');
+      break;
+    case 'btn3':
+      createGraph('C3pt_final.csv', 'Year', 'Total 3 Point attempts by Centers per Season', 'Total 3 Point attempts by Centers per Season By Year');
+      break;
+    default:
+      break;
+  }
+}
+
+// Add event listeners to the buttons
+document.getElementById('btn1').addEventListener('click', handleButtonClick);
+document.getElementById('btn2').addEventListener('click', handleButtonClick);
+document.getElementById('btn3').addEventListener('click', handleButtonClick);
+
 /*// Function to handle button click events
 function handleButtonClick(event) {
   const buttonId = event.target.id;
