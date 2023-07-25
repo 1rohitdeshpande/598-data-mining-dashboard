@@ -86,7 +86,7 @@ function handleButtonClick(event) {
   const buttonId = event.target.id;
   switch (buttonId) {
     case 'btn1':
-      createGraph('scores_final.csv', 'Year', 'Total Points per Season', 'Total Points per NBA Season By Year', 'hello');
+      createGraph('scores_final.csv', 'Year', 'Total Points per Season', 'Total Points per NBA Season By Year', 'This graph shows the points per season increasing as the years go on, showing the nature of the changing game. The 2 exceptions to this trend are 2011 which was shortened due to disputes between players and the NBA, and 2020 which was a shortened season due to COVID');
       break;
     case 'btn2':
       createGraph('3pt_final.csv', 'Year', 'Total 3 Point attempts by Season', 'Total 3 Point attempts by Season By Year', 'and');
