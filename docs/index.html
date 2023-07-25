@@ -31,14 +31,6 @@
         margin: 20px 0;
     }
 
-    /* Style for description text */
-    .description-text {
-        max-width: 600px;
-        text-align: center;
-        margin: 20px 0;
-        display: none; /* Hide description text initially */
-    }
-
     /* Style for buttons with spacing */
     #buttons-container button {
         margin: 5px;
@@ -49,23 +41,11 @@
     <div id="introduction-text">
         <p>Welcome to the NBA Style Change Visualization! Explore the graphs below to see the trends over the years.</p>
     </div>
-    <div class="description-text" id="description-graph1">
-        <!-- Description text for graph 1 -->
-        <p>Description for Graph 1 goes here.</p>
-    </div>
     <div id="my_dataviz"></div>
-    <div class="description-text" id="description-graph2">
-        <!-- Description text for graph 2 -->
-        <p>Description for Graph 2 goes here.</p>
-    </div>
     <div id="buttons-container">
-        <button id="btn1" onclick="handleButtonClick('graph1')">Graph 1</button>
-        <button id="btn2" onclick="handleButtonClick('graph2')">Graph 2</button>
-        <button id="btn3" onclick="handleButtonClick('graph3')">Graph 3</button>
-    </div>
-    <div class="description-text" id="description-graph3">
-        <!-- Description text for graph 3 -->
-        <p>Description for Graph 3 goes here.</p>
+        <button id="btn1">Graph 1</button>
+        <button id="btn2">Graph 2</button>
+        <button id="btn3">Graph 3</button>
     </div>
     <script src="script.js"></script>
 </body>

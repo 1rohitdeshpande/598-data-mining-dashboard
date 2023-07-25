@@ -1,7 +1,7 @@
 // Define the container where the graph will be rendered
 const graphContainer = '#my_dataviz';
 
-function createGraph(dataFile, xLabel, yLabel, title, description) {
+function createGraph(dataFile, xLabel, yLabel, title) {
   // Clear the container
   d3.select(graphContainer).selectAll("*").remove();
 
@@ -77,32 +77,20 @@ function createGraph(dataFile, xLabel, yLabel, title, description) {
       })
       .on("mouseout", hideTooltip);
   });
-
-  const descriptionText = document.getElementById(`description-${graphId}`);
-  descriptionText.innerHTML = `<p>${description}</p>`;
 }
 
-// Function to handle button click events and show/hide description text
-function handleButtonClick(graphId) {
-  // Hide all description texts
-  const allDescriptionTexts = document.querySelectorAll(".description-text");
-  allDescriptionTexts.forEach(descriptionText => {
-    descriptionText.style.display = "none";
-  });
-
-  // Show the description text for the current graph
-  const currentDescriptionText = document.getElementById(`description-${graphId}`);
-  currentDescriptionText.style.display = "block";
-
-  switch (graphId) {
-    case 'graph1':
-      createGraph('scores_final.csv', 'Year', 'Total Points per Season', 'Total Points per NBA Season By Year', 'hello');
+// Function to handle button click events
+function handleButtonClick(event) {
+  const buttonId = event.target.id;
+  switch (buttonId) {
+    case 'btn1':
+      createGraph('scores_final.csv', 'Year', 'Total Points per Season', 'Total Points per NBA Season By Year');
       break;
-    case 'graph2':
-      createGraph('3pt_final.csv', 'Year', 'Total 3 Point attempts by Season', 'Total 3 Point attempts by Season By Year', 'and');
+    case 'btn2':
+      createGraph('3pt_final.csv', 'Year', 'Total 3 Point attempts by Season', 'Total 3 Point attempts by Season By Year');
       break;
-    case 'graph3':
-      createGraph('C3pt_final.csv', 'Year', 'Total 3 Point attempts by Centers per Season', 'Total 3 Point attempts by Centers per Season By Year', 'goodbye');
+    case 'btn3':
+      createGraph('C3pt_final.csv', 'Year', 'Total 3 Point attempts by Centers per Season', 'Total 3 Point attempts by Centers per Season By Year');
       break;
     default:
       break;
@@ -129,6 +117,7 @@ function hideTooltip() {
 document.getElementById('btn1').addEventListener('click', handleButtonClick);
 document.getElementById('btn2').addEventListener('click', handleButtonClick);
 document.getElementById('btn3').addEventListener('click', handleButtonClick);
+
 
 //scores_final.csv
 //3pt_final.csv
