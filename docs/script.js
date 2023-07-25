@@ -86,15 +86,15 @@ function handleButtonClick(event) {
   const buttonId = event.target.id;
   switch (buttonId) {
     case 'btn1':
-      var desc =  'This graph shows the points per season increasing as the years go on, showing the nature of the changing game. The 2 outliers to this trend are 2011 which was a shortened season due to contractual disputes between players and the NBA, and 2020 which was a shortened season due to COVID';
+      var desc =  'This graph shows the points per season increasing as the years go on, showing the nature of the changing game. The 2 outliers to this trend are 2011 which was a shortened season due to contractual disputes between players and the NBA, and 2020 which was a shortened season due to COVID.';
       createGraph('scores_final.csv', 'Year', 'Total Points per Season', 'Total Points per NBA Season By Year', desc, 'Total Points');
       break;
     case 'btn2':
-      var desc = 'This graph shows how the NBA has evolved into more 3 point shots per game. Players like Ray Allen, Stephen Curry, and Reggie Miller, just to name a few, revolutionized the 3 point shot and made it a commonplace in today\'s game.';
+      var desc = 'This graph shows how the NBA has evolved into more 3 point shots per game. Players like Ray Allen, Stephen Curry, and Reggie Miller, just to name a few, revolutionized the 3 point shot and made it a commonplace in today\'s game. Now you might notice a couple outliers at 2011 and 2020. 2011 was a shortened season due to contractual disputes between players and the NBA, and 2020 was a shortened season due to COVID.';
       createGraph('3pt_final.csv', 'Year', 'Total 3 Point attempts by Season', 'Total 3 Point attempts by Season By Year', desc, 'Total 3-pt Attempts');
       break;
     case 'btn3':
-      var desc = 'This position has seen the most dynamic change in thr last 20 years. What was once a position that lived in the paint shooting layups and dunks only is today shooting more threes than ever before.';
+      var desc = 'This position has seen the most dynamic change in thr last 20 years. What was once a position that lived in the paint shooting layups and dunks only is today shooting more threes than ever before. Now you might notice a couple outliers at 2011 and 2020. 2011 was a shortened season due to contractual disputes between players and the NBA, and 2020 was a shortened season due to COVID.';
       createGraph('C3pt_final.csv', 'Year', 'Total 3 Point attempts by Centers per Season', 'Total 3 Point attempts by Centers per Season By Year', desc, 'Total 3-pt Attempts by Centers');
       break;
     default:
