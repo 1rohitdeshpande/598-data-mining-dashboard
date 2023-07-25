@@ -1,7 +1,7 @@
 // Define the container where the graph will be rendered
 const graphContainer = '#my_dataviz';
 
-function createGraph(dataFile, xLabel, yLabel, title, description) {
+function createGraph(dataFile, xLabel, yLabel, title, description, tooltiplabel) {
   // Clear the container
   d3.select(graphContainer).selectAll("*").remove();
 
@@ -73,7 +73,7 @@ function createGraph(dataFile, xLabel, yLabel, title, description) {
       .attr("r", 5)
       .attr("fill", "steelblue")
       .on("mouseover", function (event, d) {
-        showTooltip(event, d, d.year, d.total_points);
+        showTooltip(event, d, d.year, d.total_points, tooltiplabel);
       })
       .on("mouseout", hideTooltip);
     
@@ -86,13 +86,16 @@ function handleButtonClick(event) {
   const buttonId = event.target.id;
   switch (buttonId) {
     case 'btn1':
-      createGraph('scores_final.csv', 'Year', 'Total Points per Season', 'Total Points per NBA Season By Year', 'This graph shows the points per season increasing as the years go on, showing the nature of the changing game. The 2 outliers to this trend are 2011 which was a shortened season due to contractual disputes between players and the NBA, and 2020 which was a shortened season due to COVID');
+      var desc =  'This graph shows the points per season increasing as the years go on, showing the nature of the changing game. The 2 outliers to this trend are 2011 which was a shortened season due to contractual disputes between players and the NBA, and 2020 which was a shortened season due to COVID';
+      createGraph('scores_final.csv', 'Year', 'Total Points per Season', 'Total Points per NBA Season By Year', desc, 'Total Points: ');
       break;
     case 'btn2':
-      createGraph('3pt_final.csv', 'Year', 'Total 3 Point attempts by Season', 'Total 3 Point attempts by Season By Year', 'This graph shows how the NBA has evolved into more 3 point shots per game. Players like Ray Allen, Stephen Curry, and Reggie Miller, just to name a few, revolutionized the 3 point shot and made it a commonplace in today\'s game.');
+      var desc = 'This graph shows how the NBA has evolved into more 3 point shots per game. Players like Ray Allen, Stephen Curry, and Reggie Miller, just to name a few, revolutionized the 3 point shot and made it a commonplace in today\'s game.';
+      createGraph('3pt_final.csv', 'Year', 'Total 3 Point attempts by Season', 'Total 3 Point attempts by Season By Year', desc, 'Total 3-pt Attempts: ');
       break;
     case 'btn3':
-      createGraph('C3pt_final.csv', 'Year', 'Total 3 Point attempts by Centers per Season', 'Total 3 Point attempts by Centers per Season By Year', 'This position has seen the most dynamic change in thr last 20 years. What was once a position that lived in the paint shooting layups and dunks only is today shooting more threes than ever before.');
+      var desc = 'This position has seen the most dynamic change in thr last 20 years. What was once a position that lived in the paint shooting layups and dunks only is today shooting more threes than ever before.';
+      createGraph('C3pt_final.csv', 'Year', 'Total 3 Point attempts by Centers per Season', 'Total 3 Point attempts by Centers per Season By Year', desc, 'Total 3-pt Attempts by Centers:');
       break;
     default:
       break;
@@ -100,11 +103,11 @@ function handleButtonClick(event) {
 }
 
 // Function to create and display the tooltip
-function showTooltip(event, dataPoint, xValue, yValue) {
+function showTooltip(event, dataPoint, xValue, yValue, yLabel) {
   const tooltip = d3.select(graphContainer)
     .append("div")
     .attr("class", "tooltip")
-    .html(`<strong>Year:</strong> ${xValue}<br><strong>Data Point:</strong> ${yValue}`)
+    .html(`<strong>Year:</strong> ${xValue}<br><strong>${yLabel}:</strong> ${yValue}`)
     .style("left", `${event.pageX + 10}px`) // Adjust the left position by adding 10px
     .style("top", `${event.pageY - 20}px`)  // Adjust the top position by subtracting 20px
     .style("opacity", 0.9);
