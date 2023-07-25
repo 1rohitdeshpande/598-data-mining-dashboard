@@ -1,7 +1,7 @@
 // Define the container where the graph will be rendered
 const graphContainer = '#my_dataviz';
 
-function createGraph(dataFile, xLabel, yLabel, title) {
+function createGraph(dataFile, xLabel, yLabel, title, description) {
   // Clear the container
   d3.select(graphContainer).selectAll("*").remove();
 
@@ -76,6 +76,8 @@ function createGraph(dataFile, xLabel, yLabel, title) {
         showTooltip(event, d, d.year, d.total_points);
       })
       .on("mouseout", hideTooltip);
+    
+    d3.select("#chart-summary").text(description);
   });
 }
 
@@ -84,13 +86,13 @@ function handleButtonClick(event) {
   const buttonId = event.target.id;
   switch (buttonId) {
     case 'btn1':
-      createGraph('scores_final.csv', 'Year', 'Total Points per Season', 'Total Points per NBA Season By Year');
+      createGraph('scores_final.csv', 'Year', 'Total Points per Season', 'Total Points per NBA Season By Year', 'hello');
       break;
     case 'btn2':
-      createGraph('3pt_final.csv', 'Year', 'Total 3 Point attempts by Season', 'Total 3 Point attempts by Season By Year');
+      createGraph('3pt_final.csv', 'Year', 'Total 3 Point attempts by Season', 'Total 3 Point attempts by Season By Year', 'and');
       break;
     case 'btn3':
-      createGraph('C3pt_final.csv', 'Year', 'Total 3 Point attempts by Centers per Season', 'Total 3 Point attempts by Centers per Season By Year');
+      createGraph('C3pt_final.csv', 'Year', 'Total 3 Point attempts by Centers per Season', 'Total 3 Point attempts by Centers per Season By Year', 'goodbye');
       break;
     default:
       break;
