@@ -82,19 +82,27 @@ function createGraph(dataFile, xLabel, yLabel, title, description) {
   descriptionText.innerHTML = `<p>${description}</p>`;
 }
 
-// Function to handle button click events
-function handleButtonClick(event) {
-  const buttonId = event.target.id;
-  switch (buttonId) {
-    case 'btn1':
-      var descr = "Defense has become much less physical with rule changes and "
-      createGraph('scores_final.csv', 'Year', 'Total Points per Season', 'Total Points per NBA Season By Year', 'hello');
+// Function to handle button click events and show/hide description text
+function handleButtonClick(graphId) {
+  // Hide all description texts
+  const allDescriptionTexts = document.querySelectorAll(".description-text");
+  allDescriptionTexts.forEach(descriptionText => {
+    descriptionText.style.display = "none";
+  });
+
+  // Show the description text for the current graph
+  const currentDescriptionText = document.getElementById(`description-${graphId}`);
+  currentDescriptionText.style.display = "block";
+
+  switch (graphId) {
+    case 'graph1':
+      createGraph('scores_final.csv', 'Year', 'Total Points per Season', 'Total Points per NBA Season By Year');
       break;
-    case 'btn2':
-      createGraph('3pt_final.csv', 'Year', 'Total 3 Point attempts by Season', 'Total 3 Point attempts by Season By Year', 'and');
+    case 'graph2':
+      createGraph('3pt_final.csv', 'Year', 'Total 3 Point attempts by Season', 'Total 3 Point attempts by Season By Year');
       break;
-    case 'btn3':
-      createGraph('C3pt_final.csv', 'Year', 'Total 3 Point attempts by Centers per Season', 'Total 3 Point attempts by Centers per Season By Year', 'goodbye');
+    case 'graph3':
+      createGraph('C3pt_final.csv', 'Year', 'Total 3 Point attempts by Centers per Season', 'Total 3 Point attempts by Centers per Season By Year');
       break;
     default:
       break;
