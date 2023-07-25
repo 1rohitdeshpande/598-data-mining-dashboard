@@ -78,7 +78,7 @@ function createGraph(dataFile, xLabel, yLabel, title, description) {
       .on("mouseout", hideTooltip);
   });
 
-  const descriptionText = document.getElementById(descriptionContainer);
+  const descriptionText = document.getElementById(`description-${graphContainer.slice(1)}`);
   descriptionText.innerHTML = `<p>${description}</p>`;
 }
 
