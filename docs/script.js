@@ -18,6 +18,15 @@ function createGraph(dataFile, xLabel, yLabel, title, description, tooltiplabel)
     .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
+  // Add graph title
+  svg.append("text")
+    .attr("x", width / 2)
+    .attr("y", -margin.top / 2)
+    .attr("text-anchor", "middle")
+    .style("font-size", "20px")
+    .style("fill", "#000")
+    .text(title);
+
   // Read the data
   d3.csv(dataFile).then(function (data) {
 
