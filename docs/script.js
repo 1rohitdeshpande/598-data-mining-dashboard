@@ -76,7 +76,7 @@ function createGraph(dataFile, xLabel, yLabel, title, description, tooltiplabel)
         showTooltip(event, d, d.year, d.total_points, tooltiplabel);
       })
       .on("mouseout", hideTooltip);
-    
+
     d3.select("#chart-summary").text(description);
   });
 }
@@ -86,7 +86,7 @@ function handleButtonClick(event) {
   const buttonId = event.target.id;
   switch (buttonId) {
     case 'btn1':
-      var desc =  'This graph shows the points per season increasing as the years go on, showing the nature of the changing game. The 2 outliers to this trend are 2011 which was a shortened season due to contractual disputes between players and the NBA, and 2020 which was a shortened season due to COVID.';
+      var desc = 'This graph shows the points per season increasing as the years go on, showing the nature of the changing game. The 2 outliers to this trend are 2011 which was a shortened season due to contractual disputes between players and the NBA, and 2020 which was a shortened season due to COVID.';
       createGraph('scores_final.csv', 'Year', 'Total Points per Season', 'Total Points per NBA Season By Year', desc, 'Total Points');
       break;
     case 'btn2':
@@ -108,29 +108,33 @@ function handleButtonClick(event) {
 
 // Function to create and display the tooltip
 function showTooltip(event, dataPoint, xValue, yValue, yLabel) {
+  // Remove existing tooltips before adding a new one
+  d3.selectAll(".tooltip").remove();
+
   if (yLabel.includes("Percentage")) {
     const tooltip = d3.select(graphContainer)
-    .append("div")
-    .attr("class", "tooltip")
-    .html(`<strong>Year:</strong> ${xValue}<br><strong>${yLabel}:</strong> ${yValue}`)
-    .style("left", `${event.pageX + 10}px`) // Adjust the left position by adding 10px
-    .style("top", `${event.pageY - 20}px`)  // Adjust the top position by subtracting 20px
-    .style("opacity", 0.9);
+      .append("div")
+      .attr("class", "tooltip")
+      .html(`<strong>Year:</strong> ${xValue}<br><strong>${yLabel}:</strong> ${yValue.toFixed(3)}`)
+      .style("left", `${event.pageX}px`)
+      .style("top", `${event.pageY - 30}px`) // Shift the tooltip up to be near the data point
+      .style("opacity", 0.9);
   } else {
     const tooltip = d3.select(graphContainer)
-    .append("div")
-    .attr("class", "tooltip")
-    .html(`<strong>Year:</strong> ${xValue}<br><strong>${yLabel}:</strong> ${parseInt(yValue)}`)
-    .style("left", `${event.pageX + 10}px`) // Adjust the left position by adding 10px
-    .style("top", `${event.pageY - 20}px`)  // Adjust the top position by subtracting 20px
-    .style("opacity", 0.9);
+      .append("div")
+      .attr("class", "tooltip")
+      .html(`<strong>Year:</strong> ${xValue}<br><strong>${yLabel}:</strong> ${parseInt(yValue)}`)
+      .style("left", `${event.pageX}px`)
+      .style("top", `${event.pageY - 30}px`) // Shift the tooltip up to be near the data point
+      .style("opacity", 0.9);
   }
 }
 
 // Function to remove the tooltip
 function hideTooltip() {
-  d3.select(".tooltip").remove();
+  d3.selectAll(".tooltip").remove();
 }
+
 
 // Add event listeners to the buttons
 document.getElementById('btn1').addEventListener('click', handleButtonClick);
