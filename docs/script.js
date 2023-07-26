@@ -97,6 +97,10 @@ function handleButtonClick(event) {
       var desc = 'This position has seen the most dynamic change in thr last 20 years. What was once a position that lived in the paint shooting layups and dunks only is today shooting more threes than ever before. Now you might notice a couple outliers at 2011 and 2020. 2011 was a shortened season due to contractual disputes between players and the NBA, and 2020 was a shortened season due to COVID.';
       createGraph('C3pt_final.csv', 'Year', 'Total 3 Point attempts by Centers per Season', 'Total 3 Point attempts by Centers per Season By Year', desc, 'Total 3-pt Attempts by Centers');
       break;
+    case 'btn4':
+      var desc = 'This graph shows the percentage of field goal attempts that are 3 point attempts. While the other graphs show that the number of 3 point attempts have gone up, this shows how 3 point attemps compare to 2 point attempts. The trend shows to indicate that the 3 pointer is only becoming more popular. One interesting thing to note is that there are no dips in 2011 or 2020 for shortened seasons because we are looking at the 3 point shot as a percentage of total shot attempts, not just pure volume.';
+      createGraph('fg_3pt_percentage.csv', 'Year', 'Percentage of FG attempts from 3-pt', 'Percentage of FG attempts from 3-pt By Year', desc, 'Percentage of FG attempts from 3-pt');
+      break;
     default:
       break;
   }
@@ -104,13 +108,23 @@ function handleButtonClick(event) {
 
 // Function to create and display the tooltip
 function showTooltip(event, dataPoint, xValue, yValue, yLabel) {
-  const tooltip = d3.select(graphContainer)
+  if (yLabel.includes("Percentage")) {
+    const tooltip = d3.select(graphContainer)
+    .append("div")
+    .attr("class", "tooltip")
+    .html(`<strong>Year:</strong> ${xValue}<br><strong>${yLabel}:</strong> ${yValue}`)
+    .style("left", `${event.pageX + 10}px`) // Adjust the left position by adding 10px
+    .style("top", `${event.pageY - 20}px`)  // Adjust the top position by subtracting 20px
+    .style("opacity", 0.9);
+  } else {
+    const tooltip = d3.select(graphContainer)
     .append("div")
     .attr("class", "tooltip")
     .html(`<strong>Year:</strong> ${xValue}<br><strong>${yLabel}:</strong> ${parseInt(yValue)}`)
     .style("left", `${event.pageX + 10}px`) // Adjust the left position by adding 10px
     .style("top", `${event.pageY - 20}px`)  // Adjust the top position by subtracting 20px
     .style("opacity", 0.9);
+  }
 }
 
 // Function to remove the tooltip
