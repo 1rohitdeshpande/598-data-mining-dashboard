@@ -115,7 +115,7 @@ function showTooltip(event, dataPoint, xValue, yValue, yLabel) {
     const tooltip = d3.select(graphContainer)
       .append("div")
       .attr("class", "tooltip")
-      .html(`<strong>Year:</strong> ${xValue}<br><strong>${yLabel}:</strong> ${yValue.toFixed(3)}`)
+      .html(`<strong>Year:</strong> ${xValue}<br><strong>${yLabel}:</strong> ${parseFloat(yValue).toFixed(3)}`)
       .style("left", `${event.pageX}px`)
       .style("top", `${event.pageY - 30}px`) // Shift the tooltip up to be near the data point
       .style("opacity", 0.9);
