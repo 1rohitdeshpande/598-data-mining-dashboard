@@ -136,7 +136,7 @@ function hideTooltip() {
 document.getElementById('btn1').addEventListener('click', handleButtonClick);
 document.getElementById('btn2').addEventListener('click', handleButtonClick);
 document.getElementById('btn3').addEventListener('click', handleButtonClick);
-
+document.getElementById('btn4').addEventListener('click', handleButtonClick);
 
 //scores_final.csv
 //3pt_final.csv
