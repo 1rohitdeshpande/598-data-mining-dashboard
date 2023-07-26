@@ -84,6 +84,10 @@ function createGraph(dataFile, xLabel, yLabel, title, description, tooltiplabel)
 // Function to handle button click events
 function handleButtonClick(event) {
   const buttonId = event.target.id;
+  const nbaLogo = document.getElementById('nba-logo');
+  if (nbaLogo) {
+    nbaLogo.remove();
+  }
   switch (buttonId) {
     case 'btn1':
       var desc = 'This graph shows the points per season increasing as the years go on, showing the nature of the changing game. The 2 outliers to this trend are 2011 which was a shortened season due to contractual disputes between players and the NBA, and 2020 which was a shortened season due to COVID.';
