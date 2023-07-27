@@ -114,6 +114,18 @@ function handleButtonClick(event) {
       var desc = 'This graph shows the percentage of field goal attempts that are 3 point attempts. While the other graphs show that the number of 3 point attempts have gone up, this shows how 3 point attemps compare to 2 point attempts. The trend shows to indicate that the 3 pointer is only becoming more popular. One interesting thing to note is that there are no dips in 2011 or 2020 for shortened seasons because we are looking at the 3 point shot as a percentage of total shot attempts, not just pure volume.';
       createGraph('fg_3pt_percentage.csv', 'Year', 'Percentage of FG attempts from 3-pt', 'Percentage of FG attempts from 3-pt By Year', desc, 'Percentage of FG attempts from 3-pt');
       break;
+    case 'btn5':
+      var desc = 'This graph shows the percentage of field goal attempts that are 3 point attempts on average across all centers. The center positon is truly an interesting look as 20 years ago, it was a position that primarily lived within 5 feet of the basket. And this trend shows today more centers than ever being able to shoot 3 pointers. While the other graphs show that the number of 3 point attempts have gone up, this shows how 3 point attemps compare to 2 point attempts. The trend shows to indicate that the 3 pointer is only becoming more popular. One interesting thing to note is that there are no dips in 2011 or 2020 for shortened seasons because we are looking at the 3 point shot as a percentage of total shot attempts, not just pure volume.';
+      createGraph('fg_3pt_c_percentage.csv', 'Year', 'Percentage of FG attempts from 3-pt by Centers', 'Percentage of FG attempts from 3-pt by Centers By Year', desc, 'Percentage of FG attempts from 3-pt by Centers');
+      break;
+    case 'btn6':
+      var desc = 'This graph shows the percentage of field goal attempts that are 3 point attempts on average across all guards. Guards generally shoot more 3\'s than other positions, but the percentage of 3 pointers has still gone up over the years. This chart gives a good visual into this. While the other graphs show that the number of 3 point attempts have gone up, this shows how 3 point attemps compare to 2 point attempts. The trend shows to indicate that the 3 pointer is only becoming more popular. One interesting thing to note is that there are no dips in 2011 or 2020 for shortened seasons because we are looking at the 3 point shot as a percentage of total shot attempts, not just pure volume.';
+      createGraph('fg_3pt_g_percentage.csv', 'Year', 'Percentage of FG attempts from 3-pt by Guards', 'Percentage of FG attempts from 3-pt by Guards By Year', desc, 'Percentage of FG attempts from 3-pt by Guards');
+      break;
+    case 'btn6':
+      var desc = 'This graph shows the percentage of field goal attempts that are 3 point attempts on average across all forwards. The center positon is truly an interesting look as 20 years ago, it was a position that primarily lived within 5 feet of the basket. And this trend shows today more centers than ever being able to shoot 3 pointers. While the other graphs show that the number of 3 point attempts have gone up, this shows how 3 point attemps compare to 2 point attempts. The trend shows to indicate that the 3 pointer is only becoming more popular. One interesting thing to note is that there are no dips in 2011 or 2020 for shortened seasons because we are looking at the 3 point shot as a percentage of total shot attempts, not just pure volume.';
+      createGraph('fg_3pt_f_percentage.csv', 'Year', 'Percentage of FG attempts from 3-pt by Forwards', 'Percentage of FG attempts from 3-pt by Forwards By Year', desc, 'Percentage of FG attempts from 3-pt by Forwards');
+      break;
     default:
       break;
   }
@@ -154,6 +166,9 @@ document.getElementById('btn1').addEventListener('click', handleButtonClick);
 document.getElementById('btn2').addEventListener('click', handleButtonClick);
 document.getElementById('btn3').addEventListener('click', handleButtonClick);
 document.getElementById('btn4').addEventListener('click', handleButtonClick);
+document.getElementById('btn5').addEventListener('click', handleButtonClick);
+document.getElementById('btn6').addEventListener('click', handleButtonClick);
+document.getElementById('btn7').addEventListener('click', handleButtonClick);
 
 //scores_final.csv
 //3pt_final.csv
