@@ -28,7 +28,6 @@
         transition: opacity 0.3s ease-in-out;
     }
 
-
     svg {
         margin: auto;
     }
@@ -36,6 +35,7 @@
     /* Style for the buttons container */
     #buttons-container {
         margin-top: 20px;
+        text-align: center;
     }
 
     /* Style for introduction text */
@@ -49,6 +49,12 @@
     #buttons-container button {
         margin: 5px;
     }
+
+    /* Style for button labels */
+    .button-label {
+        text-decoration: underline;
+        margin-right: 5px;
+    }
 </style>
 
 <body>
@@ -59,15 +65,27 @@
     <div id="my_dataviz"></div>
     <div id="chart-summary" style="text-align: center; font-size: 15px; margin: 20px;"></div>
     <div id="buttons-container">
-        <button id="btn1">Total Points Scored</button>
-        <button id="btn2">Total 3-pt attempts</button>
-        <button id="btn3">Total 3-pt attempts By Centers</button>
-        <button id="btn4">Percentage of FG attempts as 3 Pointers</button>
-        <button id="btn5">Percentage of FG attempts as 3 Pointers from Centers</button>
-        <button id="btn6">Percentage of FG attempts as 3 Pointers from Guards</button>
-        <button id="btn7">Percentage of FG attempts as 3 Pointers from Forwards</button>
-        <button id="btn8">Total 3-pt attempts By Guards</button>
-        <button id="btn9">Total 3-pt attempts By Forwards</button>
+        <!-- First line of buttons -->
+        <div>
+            <span class="button-label">Total Points:</span>
+            <button id="btn1">Total Points Scored</button>
+        </div>
+        <!-- Second line of buttons -->
+        <div>
+            <span class="button-label">Total 3-pt Attempts by Position:</span>
+            <button id="btn2">Total 3-pt attempts</button>
+            <button id="btn3">Total 3-pt attempts By Centers</button>
+            <button id="btn8">Total 3-pt attempts By Guards</button>
+            <button id="btn9">Total 3-pt attempts By Forwards</button>
+        </div>
+        <!-- Third line of buttons -->
+        <div>
+            <span class="button-label">Percentage of FG attempts as 3 Pointers By Position:</span>
+            <button id="btn4">Percentage of FG attempts as 3 Pointers</button>
+            <button id="btn5">Percentage of FG attempts as 3 Pointers from Centers</button>
+            <button id="btn6">Percentage of FG attempts as 3 Pointers from Guards</button>
+            <button id="btn7">Percentage of FG attempts as 3 Pointers from Forwards</button>
+        </div>
     </div>
     <script src="script.js"></script>
 </body>
