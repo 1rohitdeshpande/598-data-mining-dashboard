@@ -36,7 +36,8 @@
     #buttons-container {
         margin-top: 20px;
         display: flex;
-        flex-direction: row;
+        flex-wrap: wrap; /* Wrap the buttons to the next line */
+        justify-content: center; /* Center the buttons container */
     }
 
     /* Style for each button group */
@@ -45,9 +46,10 @@
         flex-direction: column;
         align-items: center;
         margin-right: 20px;
-        margin-left: 20px;
         /* Set a fixed width for each button group */
         width: 200px;
+        padding-left: 20px; /* Add padding to the leftmost column */
+        margin-bottom: 20px; /* Add margin between each button group */
     }
 
 
