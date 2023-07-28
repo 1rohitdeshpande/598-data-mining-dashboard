@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="utf-8">
-    <title>NBA Style change </title>
+    <title>NBA Style change</title>
     <script src="https://d3js.org/d3.v7.min.js"></script>
 </head>
 <style>
@@ -40,15 +39,19 @@
         gap: 10px; /* Add gap between columns */
     }
 
+    /* Style for each button group container */
+    .button-group-container {
+        padding-left: 15px; /* Add left padding */
+        width: 200px; /* Set a fixed width for each column */
+    }
+
     /* Style for each button group */
     .button-group {
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: flex-start;
         padding: 10px;
     }
-
 
     /* Style for introduction text */
     #introduction-text {
@@ -69,7 +72,6 @@
         margin-right: 5px;
     }
 </style>
-
 <body>
     <div id="introduction-text">
         <p>Welcome to the NBA 3 Point Jumpshot Effect Visualization! Explore the graphs below to see the trends over the
@@ -80,36 +82,45 @@
     <div id="chart-summary" style="text-align: center; font-size: 15px; margin: 5px;"></div>
     <div id="buttons-container">
         <!-- 1st line of buttons -->
-        <div>
-            <span class="button-label">Total Points:</span>
-            <button id="btn1">Total Points Scored</button>
+        <div class="button-group-container">
+            <div class="button-group">
+                <span class="button-label">Total Points:</span>
+                <button id="btn1">Total Points Scored</button>
+            </div>
         </div>
         <!-- 2nd line of buttons -->
-        <div>
-            <span class="button-label">Total 3-pt Attempts:</span>
-            <button id="btn2">Total 3-pt attempts</button>
+        <div class="button-group-container">
+            <div class="button-group">
+                <span class="button-label">Total 3-pt Attempts:</span>
+                <button id="btn2">Total 3-pt attempts</button>
+            </div>
         </div>
         <!-- 3rd line of buttons -->
-        <div>
-            <span class="button-label">Total 3-pt Attempts by Position:</span>
-            <button id="btn3">Centers (C)</button>
-            <button id="btn8">Guards (G)</button>
-            <button id="btn9">Forwards (F)</button>
+        <div class="button-group-container">
+            <div class="button-group">
+                <span class="button-label">Total 3-pt Attempts by Position:</span>
+                <button id="btn3">Centers (C)</button>
+                <button id="btn8">Guards (G)</button>
+                <button id="btn9">Forwards (F)</button>
+            </div>
         </div>
         <!-- 4th line of buttons -->
-        <div>
-            <span class="button-label">Percentage of FG attempts as 3 Pointers:</span>
-            <button id="btn4">Percentage of FG attempts as 3 Pointers</button>
+        <div class="button-group-container">
+            <div class="button-group">
+                <span class="button-label">Percentage of FG attempts as 3 Pointers:</span>
+                <button id="btn4">Percentage of FG attempts as 3 Pointers</button>
+            </div>
         </div>
         <!-- 5th line of buttons -->
-        <div>
-            <span class="button-label">Percentage of FG attempts as 3 Pointers By Position:</span>
-            <button id="btn5">Centers (C)</button>
-            <button id="btn6">Guards (G)</button>
-            <button id="btn7">Forwards (F)</button>
+        <div class="button-group-container">
+            <div class="button-group">
+                <span class="button-label">Percentage of FG attempts as 3 Pointers By Position:</span>
+                <button id="btn5">Centers (C)</button>
+                <button id="btn6">Guards (G)</button>
+                <button id="btn7">Forwards (F)</button>
+            </div>
         </div>
     </div>
     <script src="script.js"></script>
 </body>
-
 </html>
